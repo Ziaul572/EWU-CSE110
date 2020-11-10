@@ -1,0 +1,26 @@
+
+ class IceCream {
+	 String icecreamType ;
+	 String icecreamCompany ;
+	 double icecreamPrice ;
+	 
+	 IceCream(){
+		 
+	 }
+	 
+	 IceCream(String iceType, String iceComp, double icePrice ) {
+		 icecreamType = iceType;
+		 icecreamCompany = iceComp;
+		 icecreamPrice = icePrice;
+	 }
+	 
+	public void displayIcecream(IceCream obj) {
+		 System.out.println("Icecream Type : " + icecreamType);
+		 System.out.println("Icecream Company : " + icecreamCompany);
+		 System.out.println("Icecream Price : " + icecreamPrice);
+		 System.out.println();
+		 
+		// obj.displayIcecream(obj);
+	 }
+	 
+ }
