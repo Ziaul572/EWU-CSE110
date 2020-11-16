@@ -1,18 +1,60 @@
 
 
 public class IceCream {
-   	String icecreamType ;
-	 String icecreamCompany ;
-	 double icecreamPrice ;
+   	private String icecreamType ;
+	private String icecreamCompany ;
+	private double icecreamPrice ;
 	 
-	 IceCream(){
+	IceCream (){
+		icecreamPrice = 0;
+	}
+	/* IceCream(){
 		 
-	 }
+	 } */
 	 
 	 IceCream(String iceType, String iceComp, double icePrice ) {
 		 icecreamType = iceType;
 		 icecreamCompany = iceComp;
 		 icecreamPrice = icePrice;
+	 } 
+	 public void setType(String typ) {
+		 icecreamType = typ ;
+	 }
+	 public String getType () {
+		 return icecreamType;
+	 }
+	 public void setComp(String comp) {
+		 icecreamCompany = comp;
+	 }
+	 public String getComp() {
+		 return icecreamCompany;
+	 }
+	 public void setPrice(double pric) {
+		 icecreamPrice = pric;
+	 }
+	 public double getPrice() {
+		 return icecreamPrice;
+	 }
+	 
+	 public boolean equals(IceCream o) {
+		 if (icecreamPrice == o.getPrice()) {
+			 return true;
+		 }
+		 else {
+			 return false;
+		 }
+	 }
+	 
+	 public int compare (IceCream com) {
+		 if(icecreamPrice > com.getPrice()) {
+			 return 1;
+		 }
+		 else if (icecreamPrice < com.getPrice()) {
+			 return 0;
+		 }
+		 else {
+			 return -1;
+		 }
 	 }
 	 
 	public static void displayIcecream(IceCream obj) {
@@ -22,14 +64,6 @@ public class IceCream {
 		 System.out.println();
 
 	 }
-//	public int number(int y) {
-//		//Scanner input = new Scanner (System.in);
-//		//System.out.print("Enter Number of IceCreams :  ");
-//		
-//		//int n = input.nextInt();
-//		//input.close();
-//		
-//		IceCream [] num = new IceCream[y];
-//	}
+
 	
 }

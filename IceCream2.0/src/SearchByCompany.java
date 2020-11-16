@@ -28,7 +28,7 @@ public class SearchByCompany {
 		input.close();
 		int index = 0;
 		for(int i = 0; i < num.length; i++) {
-			if(num[i].icecreamCompany == search) {
+			if(num[i].getComp() == search) {
 				index = i;
 				break;
 			}
