@@ -40,5 +40,6 @@ public class testBook {
 			System.out.printf("Comparing Book %d and Book %d the returned Value is %d. \n", i, i + 1, returnValue);
 			
 		}
+		System.out.println("Total number of Books : " + book.count);
 	}
 }

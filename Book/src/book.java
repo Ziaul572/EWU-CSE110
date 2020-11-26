@@ -4,7 +4,8 @@ public class book {
 	int ISBN;
 	String title;
 	int page ;
-	int count ;
+	//int count ;
+	public static int count = 0 ;
 	
 	book(){
 		
@@ -13,12 +14,14 @@ public class book {
 		ISBN = isbn;
 		title = t;
 		page = p;
+		count++;
 	}
 	
 	public static void displayAll(book obj) {
 		System.out.println("ISBN serial: " + obj.ISBN);
 		System.out.println("Book Title : " + obj.title);
 		System.out.println("Total Page : " + obj.page);
+		
 		
 	}
 	public static boolean isHeavier(book obj) {
