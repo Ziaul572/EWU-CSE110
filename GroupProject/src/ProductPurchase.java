@@ -1,10 +1,10 @@
-import java.sql.Date;
+import java.util.Date;
+//import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ProductPurchase {
-		
-		ProductPurchase(){
-			
-		}
+	
 	
 	private int productId;	
 	private String productName;
@@ -12,12 +12,18 @@ public class ProductPurchase {
 	private Date purchaseDate;
 	private int purchaseQuantity;
 	private String purchaseDescription;
+	private static double totalSpend = 0;
+	
+	ProductPurchase(){
+	
+	}
+	//ArrayList<ProductPurchase> list = new ArrayList<ProductPurchase>();
 	
 	public int getProductId() {
 		return productId;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setProductId(int productid) {
+		productId = productid;
 	}
 	public String getProductName() {
 		return productName;
@@ -34,8 +40,8 @@ public class ProductPurchase {
 	public Date getPurchaseDate() {
 		return purchaseDate;
 	}
-	public void setPurchaseDate(Date purchaseDate) {
-		this.purchaseDate = purchaseDate;
+	public void setPurchaseDate(Date date) {
+		this.purchaseDate = date;
 	}
 	public int getPurchaseQuantity() {
 		return purchaseQuantity;
@@ -50,12 +56,25 @@ public class ProductPurchase {
 		this.purchaseDescription = purchaseDescription;
 	}
 	
-	@Override
-	public String toString() {
-		return "ProductPurchase [productId=" + productId + ", productName=" + productName + ", productPrice="
-				+ productPrice + ", purchaseDate=" + purchaseDate + ", purchaseQuantity=" + purchaseQuantity
-				+ ", purchaseDescription=" + purchaseDescription + "]";
+	public static double getTotalSpend() {
+		return totalSpend;
 	}
+
+	public static void setTotalSpend(double totalSpend) {
+		ProductPurchase.totalSpend = ProductPurchase.totalSpend + totalSpend;
+	}
+
+	public String toString() {
+		return "Product Details: \n[Product ID = " + productId + "\nProduct Name = " + productName + "\nProduct Price="
+				+ productPrice * 0.05 + "$" +"\nPurchase Date = " + purchaseDate + "\nPurchase Quantity = " + purchaseQuantity
+				+ "\nPurchased With = " + purchaseDescription + "]";
+	}
+
+	public static Iterator<ProductPurchase> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 }

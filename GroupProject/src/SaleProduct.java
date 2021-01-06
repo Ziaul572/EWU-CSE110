@@ -5,6 +5,7 @@ public class SaleProduct {
 	private String saleProductName;
 	private int saleProductQuantity;
 	private String saleDescription;
+	private static double cashEarned = 0;
 	
 	
 	public int getSaleProductId() {
@@ -30,6 +31,12 @@ public class SaleProduct {
 	}
 	public void setSaleDescription(String saleDescription) {
 		this.saleDescription = saleDescription;
+	}
+	public double getCashEarned() {
+		return cashEarned;
+	}
+	public void setCashEarned(double Earned) {
+		SaleProduct.cashEarned = SaleProduct.cashEarned + Earned;
 	}
 	
 	@Override

@@ -102,7 +102,7 @@ public class testClass {
 							
 							for(int i = 0; i < course.CourseList.size(); i++) {
 								if(couId == course.CourseList.get(i).getCourseId()) {
-									course.CourseList.remove(i);
+									course.CourseList.iterator().remove();
 									System.out.println("Done");
 									break;
 								}
