@@ -29,6 +29,7 @@ public class DepartmentStore {
 				System.out.println("Enter Product ID.");
 				productPurchase.setProductId(input.nextInt());
 				System.out.println("Enter Product Name.");
+				//input.next();
 				productPurchase.setProductName(input.next());
 				System.out.println("Enter Product price.");
 				productPurchase.setProductPrice(input.nextDouble());
@@ -79,6 +80,7 @@ public class DepartmentStore {
 							stock = stock - saleProduct.getSaleProductQuantity();
 							if (stock == 0 ) {
 								StoreBeta.stockList.remove(i);
+								System.out.println("Product ID: " + StoreBeta.stockList.get(i).getProductId() + "is Out of Stock.");
 							}	
 							else if (stock < 0) {
 								System.out.println("Amount of Product is Out of Stock.");
@@ -101,6 +103,7 @@ public class DepartmentStore {
 				}
 				} catch (Exception e) {
 					System.out.println("Exception Detected! please try again.");
+					System.out.println(e);
 				}
 				break;
 			case 3: //Coming Soon

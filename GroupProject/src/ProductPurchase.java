@@ -47,7 +47,11 @@ public class ProductPurchase {
 		return purchaseQuantity;
 	}
 	public void setPurchaseQuantity(int purchaseQuantity) {
+		if (purchaseQuantity <= 0) {
+			System.out.println("Invalid Input.");
+		} else {
 		this.purchaseQuantity = purchaseQuantity;
+	}
 	}
 	public String getPurchaseDescription() {
 		return purchaseDescription;
@@ -66,7 +70,7 @@ public class ProductPurchase {
 
 	public String toString() {
 		return "Product Details: \n[Product ID = " + productId + "\nProduct Name = " + productName + "\nProduct Price="
-				+ productPrice * 0.05 + "$" +"\nPurchase Date = " + purchaseDate + "\nPurchase Quantity = " + purchaseQuantity
+				+ (productPrice + (productPrice * 0.05)) + "$" +"\nPurchase Date = " + purchaseDate + "\nPurchase Quantity = " + purchaseQuantity
 				+ "\nPurchased With = " + purchaseDescription + "]";
 	}
 
