@@ -1,5 +1,8 @@
 
+//import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.Date;
+//import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DepartmentStore {
@@ -11,21 +14,30 @@ public class DepartmentStore {
 		int option;
 		Scanner input = new Scanner(System.in);
 		double cash = 10000;
+		//boolean jump = false;
 		
 		while(true) {
+		//	reRun:
 			System.out.println("1. Buy Products from a Retailer.");
 			System.out.println("2. Sold Products to a Customer.");
 			System.out.println("3. Check Store Balance. ");
-			System.out.println("4. Check Stored Products.");
+			System.out.println("4. Check & Write Stored Products.");
 			
 			option = input.nextInt();
 			switch(option) {
 			case 1: 
-				//reRun:
-				try {
+			
+				
+					
 					double spend;
+				//	reRun:
+					//while(true) {
+						
 				ProductPurchase productPurchase = new StoreBeta();
 				Date date = new Date();
+				
+					//label:
+				try {
 				System.out.println("Enter Product ID.");
 				productPurchase.setProductId(input.nextInt());
 				System.out.println("Enter Product Name.");
@@ -39,14 +51,26 @@ public class DepartmentStore {
 				System.out.println("Enter Product Quantity");
 				productPurchase.setPurchaseQuantity(input.nextInt());
 				cash = cash - (productPurchase.getProductPrice() * productPurchase.getPurchaseQuantity());
-				System.out.println("How will you be paying? in Cash or CreditCard?");
-				productPurchase.setPurchaseDescription(input.next());
+				if (cash >= 0) {
+					System.out.println("How will you be paying? in Cash or CreditCard?");
+					productPurchase.setPurchaseDescription(input.next());
+					
+					StoreBeta.stockList.add(productPurchase);
+				}
+				else {
+					System.out.println("Transaction Denied due to Insufficient Fund");
+				}
+				//	if(jump == true) {
+				//	break reRun;
+					
+			//	}
+				//break;
+				//	}
 				
-				StoreBeta.stockList.add(productPurchase);
-				//stockList.add(productPurchase);
 				}	catch(Exception e) {
 					System.out.println("Exception Detected! please try again.");
-					//continue reRun;
+					//jump = true;
+					//break reRun;
 				}
 				 break;
 			case 2:
@@ -79,8 +103,9 @@ public class DepartmentStore {
 							stock = StoreBeta.stockList.get(i).getPurchaseQuantity();
 							stock = stock - saleProduct.getSaleProductQuantity();
 							if (stock == 0 ) {
+								System.out.println("Product Name: '" + StoreBeta.stockList.get(i).getProductName() + "' is now Out of Stock.");
 								StoreBeta.stockList.remove(i);
-								System.out.println("Product ID: " + StoreBeta.stockList.get(i).getProductId() + "is Out of Stock.");
+								//break;
 							}	
 							else if (stock < 0) {
 								System.out.println("Amount of Product is Out of Stock.");
@@ -121,7 +146,25 @@ public class DepartmentStore {
 					}
 				break;
 			case 4:
-				
+				System.out.println("Showing Every Available Stock Products.");
+				java.io.File file = new java.io.File("Stock List.txt");
+//				if (file.exists()) {
+//					System.out.println("File already Exits.");
+//					System.exit(1);
+//				}
+				try (
+						java.io.PrintWriter output = new java.io.PrintWriter(file);
+						){
+					for(int i = 0; i < StoreBeta.stockList.size(); i++) {
+						
+						System.out.println(StoreBeta.stockList.get(i).toString());
+						output.print(StoreBeta.stockList.get(i).toString());
+						output.println();
+				}
+				} catch (FileNotFoundException e) {
+					
+					e.printStackTrace();
+				}
 				break;
 				
 			default:

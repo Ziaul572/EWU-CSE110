@@ -23,8 +23,12 @@ public class ProductPurchase {
 		return productId;
 	}
 	public void setProductId(int productid) {
+		try {
 		productId = productid;
+	}	catch(Exception e) {
+		System.out.println("Exception Detected. Please Try Again");
 	}
+	} 
 	public String getProductName() {
 		return productName;
 	}
