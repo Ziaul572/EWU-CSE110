@@ -79,7 +79,7 @@ public class ProductPurchase {
 	}
 
 	public static Iterator<ProductPurchase> iterator() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	

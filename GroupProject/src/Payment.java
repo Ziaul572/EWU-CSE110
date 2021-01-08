@@ -1,60 +1,69 @@
-//By Rupin.
+
 import java.util.Date;
 import java.util.ArrayList;
 
 public class Payment extends SaleProduct{
 
-    private int PaymentId;
-    private Date PaymentDate;
-    private double PaymentAmount;
-    private String PaymentDescription;
+    private int paymentId;
+    private int paymentProductId;
+    private Date paymentDate;
+    private double paymentAmount;
+    private String paymentDescription;
 
     Payment() {
     }
-    static ArrayList<Payment> list = new ArrayList<Payment>();
+    static ArrayList<Payment> paymentList = new ArrayList<Payment>();
 
     public int getPaymentId() {
-        return PaymentId;
+        return paymentId;
     }
 
     public void setPaymentId(int PaymentId) {
-        this.PaymentId = PaymentId;
+        this.paymentId = PaymentId;
     }
+    
+    public int getPaymentProductId() {
+		return paymentProductId;
+	}
 
-    public Date getPaymentDate() {
-        return PaymentDate;
+	public void setPaymentProductId(int paymentProductId) {
+		this.paymentProductId = paymentProductId;
+	}
+
+	public Date getPaymentDate() {
+        return paymentDate;
     }
 
     public void setPaymentDate(Date PaymentDate) {
-        this.PaymentDate = PaymentDate;
+        this.paymentDate = PaymentDate;
     }
 
     public double getPaymentAmount() {
-        return PaymentAmount;
+        return paymentAmount;
     }
 
     public void setPaymentAmount(double PaymentAmount) {
-        this.PaymentAmount = PaymentAmount;
+        this.paymentAmount = PaymentAmount;
     }
 
     public String getPaymentDescription() {
-        return PaymentDescription;
+        return paymentDescription;
     }
 
     public void setPaymentDescription(String PaymentDescription) {
-        this.PaymentDescription = PaymentDescription;
+        this.paymentDescription = PaymentDescription;
     }
 
-    @Override
-        public String toString(){
+    public void add (Payment obj) {
+    	paymentList.add(obj);
+    }
+	@Override
+	public String toString() {
+		return "Payment Slip Details [Payment ID = " + paymentId + ",\nPayment Product ID = " + paymentProductId + ",\nPayment Date = "
+				+ paymentDate + ",\nPayment Amount = " + paymentAmount + ",\nPayment Description = " + paymentDescription + "]";
+	}
 
-        return "Payment Slip\nPayment ID: " + getPaymentId() +"\n"+
-               "Payment Date: " + getPaymentDate() + "\n"+
-               "Payment Amount: " + getPaymentAmount() + "\n"+
-               "Payment Description: " + getPaymentDescription() + "\n";
-
-        }
-
+   
 
 
 }

@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Date;
 //import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Random;
 
 public class DepartmentStore {
 
@@ -12,16 +13,21 @@ public class DepartmentStore {
 		
 		final double tax = 0.05;
 		int option;
-		Scanner input = new Scanner(System.in);
-		double cash = 10000;
-		//boolean jump = false;
 		
-		while(true) {
+		
+		
+		double cash = 10000;
+		boolean DepartmentStore = true;
+		
+		while(DepartmentStore) {
+			Scanner input = new Scanner(System.in);
 		//	reRun:
 			System.out.println("1. Buy Products from a Retailer.");
 			System.out.println("2. Sold Products to a Customer.");
 			System.out.println("3. Check Store Balance. ");
 			System.out.println("4. Check & Write Stored Products.");
+			System.out.println("5. Check Payment Slip for a Product.");
+			System.out.println("6. EXIT.");
 			
 			option = input.nextInt();
 			switch(option) {
@@ -80,6 +86,9 @@ public class DepartmentStore {
 				int stock;
 				double income;
 				SaleProduct saleProduct = new SaleProduct();
+				Payment payment = new Payment();
+				Random rand = new Random();
+				Date paymentDate = new Date();
 				try {
 				for(int i = 0; i < StoreBeta.stockList.size(); i++) {
 					System.out.println("Enter the Product ID of Sold Product");
@@ -95,10 +104,19 @@ public class DepartmentStore {
 							saleProduct.setSaleProductId(StoreBeta.stockList.get(i).getProductId());
 							saleProduct.setSaleProductName(StoreBeta.stockList.get(i).getProductName());
 							System.out.println("How will you be paying? in Cash or CreditCard?");
-							saleProduct.setSaleProductName(input.next());
+							saleProduct.setSaleDescription(input.next());
 							income = (StoreBeta.stockList.get(i).getProductPrice() * saleProduct.getSaleProductQuantity() ) + ((StoreBeta.stockList.get(i).getProductPrice() * tax) * saleProduct.getSaleProductQuantity());
 							cash = cash + income ;
 							saleProduct.setCashEarned(income);
+							//paymentId = rand.nextInt(1000);
+							payment.setPaymentId(rand.nextInt(10000));
+							payment.setPaymentProductId(StoreBeta.stockList.get(i).getProductId());
+							payment.setPaymentDate(paymentDate);
+							payment.setPaymentAmount(income);
+							payment.setPaymentDescription(saleProduct.getSaleDescription());
+							
+							payment.add(payment);
+							
 							System.out.println("Transaction Complete.");
 							stock = StoreBeta.stockList.get(i).getPurchaseQuantity();
 							stock = stock - saleProduct.getSaleProductQuantity();
@@ -114,6 +132,7 @@ public class DepartmentStore {
 								StoreBeta.stockList.get(i).setPurchaseQuantity(stock);
 							}
 							
+						break;
 						}
 						else if (confirm == 2) {
 							System.out.println("Transaction Denied.");
@@ -166,9 +185,27 @@ public class DepartmentStore {
 					e.printStackTrace();
 				}
 				break;
+			case 5:
+				System.out.println("Enter the Product ID of the Sold Product to get the Payment SLip.");
+				int paymentSearch = input.nextInt();
 				
+				for(int i = 0; i < Payment.paymentList.size(); i++) {
+					if (Payment.paymentList.get(i).getPaymentProductId() == paymentSearch) {
+						System.out.println("Payment Found.");
+						System.out.println(Payment.paymentList.get(i).toString());
+					}
+					else {
+						System.out.println("Payment of the Product ID '" + paymentSearch + " Not Found.");
+					}
+				}
+				break;
+			case 6:
+				//exit();
+				System.out.println("\tSuccessfully Terminated.\n\tThank you.");
+				DepartmentStore = false;
+				break;
 			default:
-				
+				System.out.println("Invalid Option.");
 				break;
 			}
 			
