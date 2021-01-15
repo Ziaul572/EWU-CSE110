@@ -9,7 +9,7 @@ public class StoreBeta extends ProductPurchase{
 	}
 	
 	static ArrayList <ProductPurchase> stockList= new ArrayList<ProductPurchase> ();
-	//ProductPurchase p = new ProductPurchase();
+
 	Iterator<ProductPurchase> itr = ProductPurchase.iterator();
     
 	public void add(ProductPurchase obj) {
@@ -21,7 +21,7 @@ public class StoreBeta extends ProductPurchase{
 
 //	@Override
 public String toString() {
-		// TODO Auto-generated method stub
+
 		return super.toString();
 	}
 	

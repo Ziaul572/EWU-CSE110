@@ -41,8 +41,8 @@ public class SaleProduct {
 	
 	@Override
 	public String toString() {
-		return "SaleProduct [saleProductId=" + saleProductId + ", saleProductName=" + saleProductName
-				+ ", saleProductQuantity=" + saleProductQuantity + ", saleDescription=" + saleDescription + "]";
+		return "Sale Product [ Sale Product ID = " + saleProductId + ", Sale Product Name = " + saleProductName
+				+ ", Sale Product Quantity = " + saleProductQuantity + ", Sale Description = " + saleDescription + " ]";
 	}
 	
 	

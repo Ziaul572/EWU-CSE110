@@ -1,0 +1,14 @@
+Product Details: 
+[Product ID = 622948954
+Product Name = Pencil
+Product Price=10.5$
+Purchase Date = Fri Jan 15 01:06:28 BDT 2021
+Purchase Quantity = 5
+Purchased With = Cash]
+Product Details: 
+[Product ID = 91412737
+Product Name = Eraser
+Product Price=5.25$
+Purchase Date = Fri Jan 15 01:07:26 BDT 2021
+Purchase Quantity = 10
+Purchased With = Cash]
